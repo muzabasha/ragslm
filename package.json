@@ -1,0 +1,33 @@
+{
+  "name": "slm-rag-learning-platform",
+  "version": "1.0.0",
+  "description": "Interactive web application for learning Sequential Learning Models and Retrieval-Augmented Generation with step-by-step animations",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 8000",
+    "serve": "npx http-server",
+    "dev": "npx live-server"
+  },
+  "keywords": [
+    "machine-learning",
+    "slm",
+    "rag",
+    "retrieval-augmented-generation",
+    "sequential-learning",
+    "education",
+    "interactive",
+    "animation",
+    "ai",
+    "transformers"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/slm-rag-learning-platform"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/slm-rag-learning-platform/issues"
+  },
+  "homepage": "https://github.com/yourusername/slm-rag-learning-platform#readme"
+}

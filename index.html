@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SLM & RAG Learning Platform</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="nav-brand">
+                <h1>AI Learning Platform</h1>
+                <p>Learn SLM & RAG Models</p>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#" onclick="switchModule('slm')">SLM</a></li>
+                <li><a href="#" onclick="switchModule('rag')">RAG</a></li>
+                <li><a href="#" onclick="switchModule('comparison')">Comparison</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- SLM Module -->
+            <section id="slm-module" class="module active">
+                <div class="module-header">
+                    <h2>Sequential Learning Model (SLM)</h2>
+                    <p>Understand how SLM processes information sequentially</p>
+                </div>
+
+                <div class="content-wrapper">
+                    <!-- Visualization Canvas -->
+                    <div class="visualization-section">
+                        <div class="canvas-container">
+                            <canvas id="slm-canvas" width="800" height="500"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Control Panel -->
+                    <div class="control-panel">
+                        <div class="info-box">
+                            <h3>Current Step: <span id="slm-step">0</span></h3>
+                            <p id="slm-description">Click play to begin the demonstration</p>
+                        </div>
+
+                        <div class="controls">
+                            <button class="btn btn-primary" onclick="slmController.play()">▶ Play</button>
+                            <button class="btn btn-secondary" onclick="slmController.pause()">⏸ Pause</button>
+                            <button class="btn btn-secondary" onclick="slmController.reset()">↻ Reset</button>
+                            <button class="btn btn-secondary" onclick="slmController.nextStep()">⏭ Next Step</button>
+                            <button class="btn btn-secondary" onclick="slmController.prevStep()">⏮ Previous Step</button>
+                        </div>
+
+                        <div class="speed-control">
+                            <label for="slm-speed">Animation Speed:</label>
+                            <input type="range" id="slm-speed" min="0.5" max="3" step="0.5" value="1" 
+                                   onchange="slmController.setSpeed(this.value)">
+                            <span id="slm-speed-value">1x</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detailed Explanation -->
+                <div class="explanation-section">
+                    <h3>How SLM Works</h3>
+                    <div class="steps-list">
+                        <div class="step-item">
+                            <span class="step-number">1</span>
+                            <div class="step-content">
+                                <h4>Input Processing</h4>
+                                <p>The input data is tokenized into sequential units</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">2</span>
+                            <div class="step-content">
+                                <h4>Embedding Layer</h4>
+                                <p>Tokens are converted into dense vector representations</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">3</span>
+                            <div class="step-content">
+                                <h4>Attention Mechanism</h4>
+                                <p>Model learns relationships between all input tokens</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">4</span>
+                            <div class="step-content">
+                                <h4>Feed Forward</h4>
+                                <p>Processed information passes through neural layers</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">5</span>
+                            <div class="step-content">
+                                <h4>Output Generation</h4>
+                                <p>Model generates predictions based on learned patterns</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- RAG Module -->
+            <section id="rag-module" class="module">
+                <div class="module-header">
+                    <h2>Retrieval-Augmented Generation (RAG)</h2>
+                    <p>Learn how RAG combines retrieval and generation for better results</p>
+                </div>
+
+                <div class="content-wrapper">
+                    <!-- Visualization Canvas -->
+                    <div class="visualization-section">
+                        <div class="canvas-container">
+                            <canvas id="rag-canvas" width="800" height="500"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Control Panel -->
+                    <div class="control-panel">
+                        <div class="info-box">
+                            <h3>Current Step: <span id="rag-step">0</span></h3>
+                            <p id="rag-description">Click play to begin the demonstration</p>
+                        </div>
+
+                        <div class="controls">
+                            <button class="btn btn-primary" onclick="ragController.play()">▶ Play</button>
+                            <button class="btn btn-secondary" onclick="ragController.pause()">⏸ Pause</button>
+                            <button class="btn btn-secondary" onclick="ragController.reset()">↻ Reset</button>
+                            <button class="btn btn-secondary" onclick="ragController.nextStep()">⏭ Next Step</button>
+                            <button class="btn btn-secondary" onclick="ragController.prevStep()">⏮ Previous Step</button>
+                        </div>
+
+                        <div class="speed-control">
+                            <label for="rag-speed">Animation Speed:</label>
+                            <input type="range" id="rag-speed" min="0.5" max="3" step="0.5" value="1" 
+                                   onchange="ragController.setSpeed(this.value)">
+                            <span id="rag-speed-value">1x</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detailed Explanation -->
+                <div class="explanation-section">
+                    <h3>How RAG Works</h3>
+                    <div class="steps-list">
+                        <div class="step-item">
+                            <span class="step-number">1</span>
+                            <div class="step-content">
+                                <h4>Query Input</h4>
+                                <p>User query is processed and converted to embeddings</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">2</span>
+                            <div class="step-content">
+                                <h4>Retrieval Phase</h4>
+                                <p>Relevant documents are retrieved from knowledge base</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">3</span>
+                            <div class="step-content">
+                                <h4>Context Ranking</h4>
+                                <p>Retrieved documents are ranked by relevance</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">4</span>
+                            <div class="step-content">
+                                <h4>Augmented Prompt</h4>
+                                <p>Top documents are combined with original query</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">5</span>
+                            <div class="step-content">
+                                <h4>Generation</h4>
+                                <p>Generator produces response using augmented context</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">6</span>
+                            <div class="step-content">
+                                <h4>Output with Citations</h4>
+                                <p>Response includes references to source documents</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Comparison Module -->
+            <section id="comparison-module" class="module">
+                <div class="module-header">
+                    <h2>SLM vs RAG Comparison</h2>
+                    <p>Compare how these models differ in approach and performance</p>
+                </div>
+
+                <div class="comparison-container">
+                    <div class="comparison-card">
+                        <h3>Sequential Learning Model (SLM)</h3>
+                        <ul class="feature-list">
+                            <li>✓ End-to-end training</li>
+                            <li>✓ All knowledge in parameters</li>
+                            <li>✓ Fast inference</li>
+                            <li>✗ Limited to training data</li>
+                            <li>✗ Hard to update</li>
+                            <li>✗ May hallucinate</li>
+                        </ul>
+                    </div>
+
+                    <div class="comparison-card">
+                        <h3>Retrieval-Augmented Generation (RAG)</h3>
+                        <ul class="feature-list">
+                            <li>✓ Uses external knowledge</li>
+                            <li>✓ Easy to update</li>
+                            <li>✓ More factual</li>
+                            <li>✓ Citable sources</li>
+                            <li>✗ Requires retrieval step</li>
+                            <li>✗ Slower inference</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="comparison-table-section">
+                    <h3>Detailed Comparison</h3>
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Aspect</th>
+                                <th>SLM</th>
+                                <th>RAG</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Knowledge Source</td>
+                                <td>Model Parameters</td>
+                                <td>External Documents</td>
+                            </tr>
+                            <tr>
+                                <td>Update Mechanism</td>
+                                <td>Retraining Required</td>
+                                <td>Add New Documents</td>
+                            </tr>
+                            <tr>
+                                <td>Factuality</td>
+                                <td>Medium</td>
+                                <td>High</td>
+                            </tr>
+                            <tr>
+                                <td>Inference Speed</td>
+                                <td>Fast</td>
+                                <td>Slower</td>
+                            </tr>
+                            <tr>
+                                <td>Traceability</td>
+                                <td>Low</td>
+                                <td>High</td>
+                            </tr>
+                            <tr>
+                                <td>Best For</td>
+                                <td>General Knowledge</td>
+                                <td>Specific Domains</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2024 AI Learning Platform. Learn by doing with interactive demonstrations.</p>
+            <p>GitHub: <a href="https://github.com" target="_blank">View Source</a></p>
+        </footer>
+    </div>
+
+    <script src="animations.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
